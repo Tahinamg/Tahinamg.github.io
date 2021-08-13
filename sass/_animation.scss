@@ -1,0 +1,39 @@
+@mixin changebackground($color,$color1,$color2,$color3,$color4){
+    @keyframes changebackground {
+        0%{
+            background-color: $color;
+        }
+        25%{
+            background-color: $color1;
+        }
+        50%{
+            background-color: $color2;
+        }
+        75%{
+            background-color: $color3;
+        }
+        100%{
+            background-color: $color4;
+
+        }
+    }
+    @keyframes changebuttoncolor {
+        0%{
+            background-color: rgb(49, 49, 49);
+            color: white;
+        }
+        100%{
+            background-color: white;
+            color: rgb(201, 25, 201);
+        }
+    }
+    @keyframes changecolor {
+        0%{
+            color: rgb(44, 44, 44);
+        }
+        100%{
+            color: rgb(248, 248, 248);
+        }
+    }
+    
+}

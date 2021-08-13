@@ -1,0 +1,12 @@
+
+@mixin default{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-style: unset;
+    scroll-behavior: smooth;
+}
+@mixin transition($property,$duration,$delai:0s){
+    transition:$property $duration $delai;
+}

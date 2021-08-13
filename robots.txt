@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Sitemap:https://ravelojaonatahinanatanaela.github.io/sitemap.xml

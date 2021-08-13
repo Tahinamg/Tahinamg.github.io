@@ -1,0 +1,121 @@
+@use 'component';
+@use 'rule';
+@use 'animation';
+
+@include animation.changebackground(rgb(255, 255, 255), rgb(255, 233, 32), rgb(54, 255, 36), rgb(34, 116, 224), rgb(202, 22, 247));
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+* {
+    @include rule.default;
+}
+
+.navbar {
+    @include component.navigationbar;
+
+    .menu-burger {
+        @include component.menuburger;
+    }
+
+    .navlist {
+        @include component.navlist;
+    }
+
+    .nav-item {
+        @include component.nav-item;
+
+        .nav-link {
+            @include component.nav-link(component.$secondary_text);
+            @include rule.transition(all, 0.4s)
+        }
+
+        .nav-link:hover {
+            @include component.nav-link(component.$third_text, component.$background_secondary);
+        }
+    }
+}
+
+.banner {
+    @include component.banner;
+
+    .window {
+        @include component.window;
+    }
+
+    .container-image {
+        @include component.container-image;
+    }
+
+    .image-banner {
+        @include component.imagebanner
+    }
+}
+
+.section_header {
+    @include component.section_header;
+}
+
+.section_title {
+    @include component.section_title;
+}
+
+.section_description {
+    @include component.section_description;
+}
+
+.container {
+    @include component.container;
+    .product_card {
+        @include component.product_card;
+    }
+    .product_title{
+        @include component.product_title;
+    }
+    .product_description{
+        @include component.product_description;
+    }
+    .btn{
+        @include component.btn;
+    }
+    .btn-violeta{
+        @include component.btn-violeta;
+    }
+    .btn-blacka{
+        @include component.btn-blacka;
+    }
+    .btn-3{
+        @include component.btn-3;
+    }
+}
+
+.second_section{
+    @include component.second_section;
+}
+.skill_container{
+    @include component.skill_container;
+}
+.portfolio_section{
+    @include component.portfolio_section;
+}
+
+.form_section{
+    @include component.form_section;
+    @include component.form_body;
+}
+.footer{
+    @include component.footer;
+}

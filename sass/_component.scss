@@ -1,0 +1,1432 @@
+@use 'rule';
+
+$extra_small: '(max-width:420px)';
+$small: '(max-width:700px)';
+$medium:'(max-width:998px)';
+$large:'(max-width:1200px)';
+
+$txt_es_title:1.5em;
+$txt_sm_title:2.5em;
+$txt_md_title:2.70em;
+$txt_lg_title:3em;
+$txt_xl_title:3.25em;
+
+$txt_es_subtitle:1.2em;
+$txt_sm_subtitle:1.65em;
+$txt_md_subtitle:2em;
+$txt_lg_subtitle:2.25em;
+$txt_xl_subtitle:2.50em;
+
+$txt_es_p:16px;
+$txt_sm_p:16px;
+$txt_md_p:16px;
+$txt_lg_p:16px;
+$txt_xl_p:18px;
+
+$primary_text:#AB2BFA;
+$secondary_text:white;
+$third_text:#5C5B5B;
+$emphasis_text:rgb(17, 17, 17);
+
+$background_primary:#804ea0;
+$background_secondary:white;
+$background_third:#5C5B5B;
+
+%btn {
+    padding: 5px 10px;
+    display: inline-block;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+%btn-violeta {
+    background-color: rgb(32, 32, 32);
+    color: white;
+}
+
+%btn-blacka {
+    background-color: rgb(107, 79, 0);
+    color: white;
+}
+
+%btn-3 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+}
+
+@mixin w-50 {
+    width: 50%;
+}
+
+@mixin w-25 {
+    width: 25%;
+}
+
+@mixin w-75 {
+    width: 75%;
+}
+
+@mixin w-100 {
+    width: 100%;
+}
+
+@font-face {
+    font-family: Librebaskerville;
+    src: url("../font/LibreBaskerville-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: camaro;
+    src: url('../font/Camaro\ Sans.otf') format('opentype');
+}
+
+
+@mixin btn_icon {
+    display: inline;
+    width: 70px;
+    height: 70px;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+    @include rule.transition(all, 0.4s);
+}
+
+@mixin buttonprimary {
+    .btn-primary {
+        background-color: $background_primary;
+        color: $secondary_text;
+        @include rule.transition(all, 0.5s);
+
+        &:hover {
+            background-color: $background_third;
+            color: $secondary_text;
+        }
+    }
+}
+
+@mixin navigationbar {
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: $background_primary;
+}
+
+@mixin menuburger {
+    display: none;
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+    cursor: pointer;
+
+    @media screen and #{$small} {
+        display: inline-block;
+        color: rgb(255, 255, 255);
+        font-size: $txt_es_title;
+        cursor: pointer;
+    }
+
+    @media screen and #{$extra_small} {
+        display: inline-block;
+        color: rgb(255, 255, 255);
+        font-size: $txt_es_title;
+        cursor: pointer;
+    }
+
+}
+
+@mixin navlist {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+
+    @media screen and #{$extra_small} {
+        overflow: hidden;
+        @include rule.transition(all, 0.3s);
+        width: 0%;
+        max-width: 600px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background-color: rgb(54, 54, 54);
+        bottom: 0;
+        padding-top: 100px;
+    }
+
+    @media screen and #{$small} {
+        overflow: hidden;
+        @include rule.transition(all, 0.3s);
+        width: 0%;
+        max-width: 600px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background-color: rgb(54, 54, 54);
+        bottom: 0;
+        padding-top: 100px;
+    }
+
+    .closenavlist {
+        display: none;
+        color: white;
+        cursor: pointer;
+        right: 20px;
+        top: 20px;
+        @include rule.transition(all, 0.5s);
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 150%;
+        position: absolute;
+
+        @media screen and #{$extra_small} {
+            display: block;
+            font-size: $txt_es_title;
+
+            &:hover {
+                background-color: $background_secondary;
+                color: $background_third;
+
+            }
+        }
+
+        @media screen and #{$small} {
+            display: block;
+            font-size: $txt_sm_title;
+            line-height: 130%;
+
+            &:hover {
+                background-color: $background_secondary;
+                color: $background_third;
+
+            }
+        }
+    }
+}
+
+@mixin nav-item {
+    display: inline-block;
+    width: auto;
+
+    @media screen and #{$extra_small} {
+        display: block;
+    }
+
+    @media screen and #{$small} {
+        display: block;
+    }
+}
+
+@mixin nav-link ($color, $bg:rgba(0, 0, 0, 0)) {
+    display: block;
+    color: $color;
+    padding: 10px 10px;
+    background-color: $bg;
+    font-weight: 800;
+    width: 100%;
+    font-size: $txt_xl_p;
+
+    @media screen and #{$large} {
+        font-size: $txt_lg_p;
+    }
+}
+
+@mixin banner {
+    background-color: $background_primary;
+    width: 100%;
+    height: 100vh;
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 250px;
+
+    @media screen and #{$medium} {
+        height: auto;
+        position: relative;
+        margin-bottom: 250px;
+    }
+
+    @media screen and #{$extra_small} {
+        flex-direction: column;
+        height: auto;
+        position: relative;
+        min-height: 250px;
+        margin-bottom: 250px;
+
+    }
+
+    @media screen and #{$small} {
+        flex-direction: column;
+        height: auto;
+        position: relative;
+        min-height: 250px;
+        margin-bottom: 250px;
+
+    }
+
+    /*impotant to review*/
+}
+
+@mixin container-image {
+    display: flex;
+    flex: 1 30%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @media screen and #{$large} {
+        flex: 1 40%;
+    }
+
+    @media screen and #{$extra_small} {
+        display: block;
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media screen and #{$small} {
+        display: block;
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &::before {
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        position: absolute;
+        border-radius: 50%;
+        z-index: 1;
+        margin-left: -200px;
+        margin-top: -200px;
+
+        @media screen and #{$large} {
+            margin-left: -130px;
+            margin-top: -150px;
+        }
+
+        @media screen and #{$medium} {
+            width: 150px;
+            height: 150px;
+            margin-left: -130px;
+            margin-top: -150px;
+        }
+
+        @media screen and #{$small} {
+            display: none;
+        }
+
+        @media screen and #{$extra_small} {
+            display: none;
+        }
+    }
+}
+
+@mixin imagebanner {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+
+    @media screen and #{$large} {
+        width: 250px;
+        height: 250px;
+    }
+
+    @media screen and #{$medium} {
+        width: 250px;
+        height: 250px;
+    }
+
+    @media screen and #{$small} {
+        width: 200px;
+        height: 200px;
+        border: 3px solid white;
+    }
+
+    @media screen and #{$extra_small} {
+        width: 200px;
+        height: 200px;
+        border: 3px solid white;
+    }
+}
+
+@mixin window($el1:white, $el2:rgb(95, 255, 31), $el3:rgb(221, 255, 31)) {
+    width: 70%;
+    max-width: 1000px;
+    height: 100%;
+    overflow: hidden;
+    min-height: 400px;
+
+    @media screen and #{$large} {
+        width: 60%;
+    }
+
+    @media screen and #{$small} {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    @media screen and #{$extra_small} {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .window-header {
+        height: 50px;
+        border: 1px solid #ffffff;
+        position: relative;
+
+        @media screen and #{$medium} {
+            display: none;
+        }
+
+        @media screen and #{$small} {
+            display: none;
+        }
+
+        @media screen and #{$extra_small} {
+            display: none;
+        }
+
+    }
+
+    .window-header .ellipse {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @media screen and #{$medium} {
+            display: none;
+        }
+
+        @media screen and #{$small} {
+            display: none;
+        }
+
+        @media screen and #{$extra_small} {
+            display: none;
+        }
+
+    }
+
+    .right-1 {
+        background-color: $el1;
+        position: absolute;
+        right: 100px;
+    }
+
+    .right-2 {
+        background-color: $el2;
+        position: absolute;
+        right: 70px;
+    }
+
+    .right-3 {
+        background-color: $el3;
+        position: absolute;
+        right: 40px;
+    }
+
+    .window-body {
+        width: 100%;
+        height: 80%;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+
+        @media screen and #{$large} {
+            align-items: center;
+        }
+
+        @media screen and #{$medium} {
+            border: none;
+            height: auto;
+            background-color: transparent;
+            height: 100%;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        @media screen and #{$small} {
+            border: none;
+            height: auto;
+            display: block;
+            background-color: transparent;
+            min-height: 250px;
+        }
+
+        @media screen and #{$extra_small} {
+            border: none;
+            height: auto;
+            display: block;
+            background-color: transparent;
+            min-height: 250px;
+        }
+
+
+        .website-name,
+        .website-username,
+        .website-details {
+
+            padding: 10px;
+            word-wrap: break-word;
+            user-select: none;
+            text-align: center;
+
+            @media screen and #{$small} {
+                padding: 10px 5px;
+            }
+
+            @media screen and #{$extra_small} {
+                padding: 10px 5px;
+            }
+
+
+        }
+    }
+
+    .website-name {
+        font-size: $txt_xl_title;
+        font-family: Librebaskerville;
+        letter-spacing: 10px;
+        color: $third_text;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_title;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_title;
+            color: $secondary_text;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_title;
+            color: $secondary_text;
+            text-align: center;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_title;
+            color: $secondary_text;
+            text-align: center;
+        }
+
+
+
+    }
+
+    .website-username {
+        color: $third_text;
+        font-size: $txt_xl_subtitle;
+        font-family: Librebaskerville;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_subtitle;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_subtitle;
+            color: $secondary_text;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_subtitle;
+            color: $secondary_text;
+            text-align: center;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_subtitle;
+            color: $secondary_text;
+            text-align: center;
+        }
+    }
+
+    .website-details {
+        color: $third_text;
+        font-size: $txt_xl_p;
+        font-style: italic;
+        font-family: camaro;
+        letter-spacing: 5px;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_p;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_p;
+            color: $secondary_text;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_p;
+            text-align: center;
+            position: absolute;
+            bottom: -148px;
+            color: $third_text;
+            left: 50%;
+            transform: translateX(-50%);
+            font-style: normal;
+            width: 100%;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_p;
+            text-align: center;
+            position: absolute;
+            bottom: -148px;
+            color: $third_text;
+            left: 50%;
+            transform: translateX(-50%);
+            font-style: normal;
+            width: 100%;
+        }
+    }
+
+    .btn {
+        @extend %btn;
+        width: 200px;
+        margin-left: 20px;
+
+        @media screen and #{$medium} {
+            display: none;
+        }
+
+        @media screen and #{$small} {
+            position: absolute;
+            bottom: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 0;
+            width: 150px;
+            display: block;
+        }
+
+        @media screen and #{$extra_small} {
+            position: absolute;
+            bottom: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 0;
+            width: 150px;
+            display: block;
+        }
+    }
+
+    @include buttonprimary;
+
+    .roundedbtn {
+        display: none;
+
+        @media screen and #{$medium} {
+            @include btn_icon;
+            background-color: white;
+            color: $primary_text;
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0px 2px 4px $background_primary;
+
+            &:hover {
+                background-color: $background_third;
+                color: white;
+                border: 2px solid white;
+            }
+
+            .iconify {
+                font-size: $txt_sm_title;
+                vertical-align: middle;
+                text-align: center;
+            }
+        }
+
+        @media screen and #{$small} {
+            display: none;
+        }
+
+    }
+}
+
+/*section part*/
+
+@mixin section_header($bgcol:$background_primary) {
+    padding: 30px;
+    background-color: $bgcol;
+    height: auto;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 100px;
+}
+
+@mixin section_title($col:$third_text) {
+    color: $col;
+    font-size: $txt_xl_title;
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    left: 0;
+
+    .emphasis {
+        color: $secondary_text;
+        display: block;
+    }
+
+    @media screen and #{$large} {
+        font-size: $txt_lg_title;
+        top: -80px;
+
+    }
+
+    @media screen and #{$medium} {
+        font-size: $txt_md_title;
+    }
+
+    @media screen and #{$small} {
+        font-size: $txt_sm_title;
+        top: -45px;
+    }
+
+    @media screen and #{$extra_small} {
+        font-size: $txt_es_title;
+    }
+}
+
+@mixin section_description ($col:$secondary_text) {
+    color: $col;
+    font-size: $txt_xl_p;
+
+    @media screen and #{$large} {
+        font-size: $txt_lg_p;
+    }
+
+    @media screen and #{$medium} {
+        font-size: $txt_md_p;
+    }
+
+    @media screen and #{$small} {
+        font-size: $txt_sm_p;
+    }
+
+    @media screen and #{$extra_small} {
+        font-size: $txt_es_p;
+    }
+}
+
+
+@mixin container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @media screen and #{$medium} {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+@mixin product_card {
+    background-color: $background_third;
+    color: $secondary_text;
+    padding: 10px 30px;
+
+    &.bg-1 {
+        background-color: rgb(77, 77, 77);
+        width: 50%;
+
+        @media screen and #{$medium} {
+            width: 90%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+
+    &.bg-2 {
+        background-color: rgb(219, 223, 0);
+        width: 50%;
+
+        @media screen and #{$medium} {
+            margin-bottom: 20px;
+            width: 90%;
+            text-align: center;
+        }
+    }
+
+    &.bg-3 {
+        background-color: $background_primary;
+        width: 100%;
+
+        @media screen and #{$medium} {
+            margin-bottom: 20px;
+            width: 90%;
+            text-align: center;
+        }
+    }
+}
+
+@mixin product_header {
+    width: 100%;
+    padding: 10px;
+}
+
+@mixin product_title {
+    font-size: $txt_xl_subtitle;
+    color: $secondary_text;
+    font-weight: 800;
+    text-align: center;
+
+    @media screen and #{$large} {
+        font-size: $txt_lg_subtitle;
+        font-weight: 500;
+    }
+
+    @media screen and #{$medium} {
+        font-size: $txt_md_subtitle;
+        font-weight: 500;
+    }
+
+    @media screen and #{$small} {
+        font-size: $txt_sm_subtitle;
+        font-weight: 500;
+    }
+
+    @media screen and #{$extra_small} {
+        font-size: $txt_es_subtitle;
+        font-weight: 500;
+    }
+
+}
+
+@mixin product_description {
+    color: $secondary_text;
+    font-size: $txt_xl_p;
+    padding: 20px 5px;
+
+    @media screen and #{$large} {
+        font-size: $txt_lg_p;
+        font-weight: 500;
+    }
+
+    @media screen and #{$medium} {
+        font-size: $txt_md_p;
+        font-weight: 500;
+    }
+
+    @media screen and #{$small} {
+        font-size: $txt_sm_p;
+        font-weight: 500;
+    }
+
+    @media screen and #{$extra_small} {
+        font-size: $txt_es_p;
+        font-weight: 500;
+    }
+}
+
+@mixin btn {
+    @extend %btn;
+    padding: 10px;
+    border-radius: 2%;
+    @include rule.transition(all, 0.5s);
+}
+
+@mixin btn-violeta {
+    @extend %btn-violeta;
+}
+
+@mixin btn-blacka {
+    @extend %btn-blacka;
+}
+
+@mixin btn-3 {
+    @extend %btn-3;
+}
+
+@mixin second_section {
+    .section_header {
+        @include section_header($background_secondary);
+    }
+
+    .my_section_title {
+        color: $primary_text;
+        font-size: $txt_xl_title;
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_title;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_title;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_title;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_title;
+        }
+    }
+
+    .article_description {
+        width: 100%;
+        padding: 50px;
+
+        .description_header {
+            width: 100%;
+        }
+
+        .description_title {
+            color: yellow;
+            font-weight: 500;
+            text-align: left;
+            width: 50%;
+            margin: auto;
+            font-size: $txt_xl_subtitle;
+            border-bottom: 3px solid yellow;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_subtitle;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_subtitle;
+                width: 100%;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_subtitle;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_subtitle;
+            }
+        }
+
+        .description_list {
+            list-style-type: ' - ';
+            list-style-position: inside;
+            margin: auto;
+            width: 50%;
+
+            @media screen and #{$medium} {
+                width: 100%;
+            }
+        }
+
+        .description_item {
+            padding: 10px 4px;
+            font-size: $txt_xl_p;
+            color: $third_text;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_p;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_p;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_p;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_p;
+            }
+        }
+    }
+}
+
+@mixin skill_container {
+    display: block;
+
+    .skill_header {
+        @include section_header(white);
+
+        .skill_title {
+            text-align: center;
+            text-transform: uppercase;
+            color: $primary_text;
+            font-size: $txt_xl_title;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_title;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_title;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_title;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_title;
+            }
+
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+
+        @media screen and #{$small} {
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+
+    .skill-item {
+        width: 30%;
+
+        @media screen and #{$medium} {
+            width: 40%;
+            min-width: 300px;
+        }
+
+        @media screen and #{$small} {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+    }
+
+    .skill-title {
+        font-size: $txt_xl_subtitle;
+        text-align: left;
+        color: $primary_text;
+        width: 100%;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_subtitle;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_subtitle;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_subtitle;
+            text-align: center;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_subtitle;
+        }
+    }
+
+    .skill-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: center;
+
+        @media screen and #{$small} {
+            justify-content: center;
+        }
+
+        .iconify {
+            font-size: $txt_xl_subtitle;
+            width: 10%;
+            min-width: 50px;
+            color: $primary_text;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_subtitle;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_subtitle;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_subtitle;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_subtitle;
+            }
+        }
+    }
+}
+
+@mixin portfolio_section {
+    margin-top: 300px;
+    margin-bottom: 100px;
+
+    .portfolio_header {
+        @include section_header($background_primary);
+        position: relative;
+
+        .portfolio_img {
+            width: 40%;
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 300px;
+            position: absolute;
+
+            @media screen and #{$large} {
+                width: 40%;
+                top: -150px;
+            }
+
+            @media screen and #{$medium} {
+                width: 30%;
+                top: -100px;
+            }
+
+            @media screen and #{$small} {
+                top: -100px;
+            }
+
+            @media screen and #{$extra_small} {
+                top: -100px;
+            }
+        }
+
+        .portfolio_title {
+            text-align: center;
+            color: $secondary_text;
+            font-size: $txt_xl_title;
+            padding-top: 100px;
+            text-transform: uppercase;
+        }
+    }
+
+    .portfolio_body {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        padding: 30px;
+        justify-content: center;
+
+        .portfolio-container {
+            width: 50%;
+            max-width: 300px;
+            min-width: 250px;
+            position: relative;
+            box-shadow: 0px 0px 3px $background_third;
+            margin: 30px;
+        }
+
+        .portfolio-item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-legend {
+            font-weight: 700;
+            font-size: $txt_xl_p;
+            text-align: center;
+        }
+
+    }
+}
+
+@mixin form_section($bgcol:$background_primary) {
+    width: 100%;
+    background: linear-gradient(90deg, $background_primary 50%, rgb(5, 5, 5) 50%);
+
+    @media screen and #{$small} {
+        background: linear-gradient(90deg, $background_primary, $background_primary);
+    }
+
+    .form_header {
+        width: 100%;
+    }
+
+    .form_title {
+        width: 100%;
+        text-align: center;
+        font-size: $txt_xl_title;
+        color: $secondary_text;
+        text-transform: uppercase;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_title;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_title;
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_title;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_title;
+        }
+    }
+
+}
+
+@mixin form_body {
+    .form_body {
+        height: 500px;
+        width: 100%;
+        overflow: auto;
+        position: relative;
+
+        @media screen and #{$small} {
+            height: auto;
+            overflow: hidden;
+        }
+
+        &::after {
+            content: 'ou';
+            font-size: $txt_xl_subtitle;
+            color: $secondary_text;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -22%);
+            font-weight: 900;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_subtitle;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_subtitle;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_subtitle;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_subtitle;
+            }
+        }
+
+        .form {
+            width: 50%;
+            float: left;
+
+            @media screen and #{$small} {
+                float: none;
+                width: 100%;
+            }
+        }
+
+        .form_head {
+            width: 100%;
+        }
+
+        .form_label {
+            text-align: center;
+            color: $secondary_text;
+            font-size: $txt_xl_subtitle;
+
+            @media screen and #{$large} {
+                font-size: $txt_lg_subtitle;
+            }
+
+            @media screen and #{$medium} {
+                font-size: $txt_md_subtitle;
+            }
+
+            @media screen and #{$small} {
+                font-size: $txt_sm_subtitle;
+            }
+
+            @media screen and #{$extra_small} {
+                font-size: $txt_es_subtitle;
+            }
+        }
+
+        .input_container {
+            width: 100%;
+            padding: 30px;
+
+            label,
+            input {
+                display: block;
+                margin: auto;
+            }
+
+            label {
+                color: $secondary_text;
+                font-size: $txt_xl_p;
+
+                @media screen and #{$large} {
+                    font-size: $txt_lg_p;
+                }
+
+                @media screen and #{$medium} {
+                    font-size: $txt_md_p;
+                }
+
+                @media screen and #{$small} {
+                    font-size: $txt_sm_p;
+                }
+
+                @media screen and #{$extra_small} {
+                    font-size: $txt_es_p;
+                }
+            }
+
+            input {
+                width: 100%;
+                max-width: 400px;
+                height: 40px;
+                border: none;
+            }
+
+            label {
+                max-width: 400px;
+                width: 100%;
+            }
+
+            textarea {
+                width: 100%;
+                max-width: 400px;
+                resize: none;
+                margin: auto;
+                display: block;
+            }
+        }
+
+        /*contact section */
+        .form_contact_section {
+            float: right;
+            width: 50%;
+            height: 100%;
+            position: relative;
+
+            @media screen and #{$small} {
+                float: none;
+                width: 100%;
+                background-color: rgb(26, 26, 26);
+                height: 400px;
+            }
+
+            .form_contact {
+                position: absolute;
+                width: 100%;
+                color: yellow;
+                text-align: center;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 100;
+                font-size: $txt_xl_p;
+
+                @media screen and #{$large} {
+                    font-size: $txt_lg_p;
+                }
+
+                @media screen and #{$medium} {
+                    font-size: $txt_md_p;
+                }
+
+                @media screen and #{$small} {
+                    font-size: $txt_sm_p;
+                    position: absolute;
+
+                }
+
+                @media screen and #{$extra_small} {
+                    font-size: $txt_es_p;
+                }
+            }
+        }
+    }
+
+}
+
+@mixin footer {
+    padding: 200px 50px;
+    background-image: url('../image/image-bob.png');
+    background-position: 130% 23px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    min-height: 500px;
+    @media screen and #{$large} {
+        background-position: 150% 23px;
+    }
+
+    @media screen and #{$medium} {
+        background-position: 120% 250px;
+        background-size: 40%;
+
+    }
+
+    @media screen and #{$small} {
+        background-position: 130% 250px;
+        background-size: 60%;
+    }
+
+
+
+    .footer_banner {
+        background-color: white;
+        display: inline-block;
+        font-size: $txt_xl_title;
+        color: $third_text;
+
+        @media screen and #{$large} {
+            font-size: $txt_lg_title;
+        }
+
+        @media screen and #{$medium} {
+            font-size: $txt_md_title;
+            margin-top: -150px;
+
+        }
+
+        @media screen and #{$small} {
+            font-size: $txt_sm_title;
+        }
+
+        @media screen and #{$extra_small} {
+            font-size: $txt_es_title;
+        }
+    }
+
+    .btn {
+        @extend %btn;
+        background-color: $background_primary;
+        color: $secondary_text;
+        padding: 10px;
+        display: block;
+    }
+}
