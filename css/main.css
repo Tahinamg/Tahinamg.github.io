@@ -714,7 +714,7 @@
   color: #5C5B5B;
   font-size: 3.25em;
   position: absolute;
-  top: -100px;
+  top: -50px;
   width: 100%;
   text-align: center;
   text-transform: uppercase;
@@ -727,11 +727,12 @@
 @media screen and (max-width:1200px) {
   .section_title {
     font-size: 3em;
-    top: -80px;
+    top: -50px;
   }
 }
 @media screen and (max-width:998px) {
   .section_title {
+    top: -40px;
     font-size: 2.7em;
   }
 }
@@ -744,6 +745,7 @@
 @media screen and (max-width:420px) {
   .section_title {
     font-size: 1.5em;
+    top: -25px;
   }
 }
 

@@ -682,7 +682,7 @@ $background_third:#5C5B5B;
     color: $col;
     font-size: $txt_xl_title;
     position: absolute;
-    top: -100px;
+    top: -50px;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
@@ -695,11 +695,12 @@ $background_third:#5C5B5B;
 
     @media screen and #{$large} {
         font-size: $txt_lg_title;
-        top: -80px;
+        top: -50px;
 
     }
 
     @media screen and #{$medium} {
+        top: -40px;
         font-size: $txt_md_title;
     }
 
@@ -710,6 +711,7 @@ $background_third:#5C5B5B;
 
     @media screen and #{$extra_small} {
         font-size: $txt_es_title;
+        top: -25px;
     }
 }
 
