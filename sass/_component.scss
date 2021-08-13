@@ -227,6 +227,7 @@ $background_third:#5C5B5B;
     font-weight: 800;
     width: 100%;
     font-size: $txt_xl_p;
+    font-family:roboto,calibri, 'sans-serif';
 
     @media screen and #{$large} {
         font-size: $txt_lg_p;
